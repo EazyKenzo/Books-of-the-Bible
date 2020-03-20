@@ -27,23 +27,28 @@
         </div>
         </div>
     </nav>
-    <div class="article-clean" style="background-color: rgb(56,66,67);">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="intro">
-                        <p class="text-center text-white" style="font-size: 18px;"><span class="by">by</span> <a class="text-danger" href="about.html">Markus Thiessen</a></p><img src="assets/img/bible.jpg" loading="auto" width="100%"></div>
-                    <div class="text" style="color: rgba(255,255,255,0.67);">
-                        <p>This website aims to provide historic data to provide clarity on matters related to the bible; including dates, writers, and content summary.</p>
-                        <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac lacus. <strong>Ut vehicula rhoncus</strong> elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit <em>pulvinar dict</em> vel in justo. Vestibulum
-                            ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
-                        <h2 style="color: #dc3545;">Disclaimer</h2>
-                        <p>While I have made every attempt to ensure that the information contained in this site has been obtained from reliable sources, the information in this site is for general guidance on matters of interest only. The estimated dates
-                            and information can vary widely based on specific facts involved due to the varying historic data.</p>
-                        <p>We are not responsible for any errors or omissions, or for any misleading result obtained from the use of this information. All information in this site is provided "as is", with no guarentee of completeness or accuracy.</p>
-                    </div>
+    <div class="contact-clean" style="padding: 0px;">
+        <div style="background-image: url(&quot;assets/img/bible.jpg&quot;);background-size: cover;background-position: center;padding: 80px 0px;background-color: #384243;">
+            <form id="book_edit" method="post" style="background-color: rgba(56,66,67,0.76);color: rgba(45,45,45,0.85);">
+                <h2 class="text-center" style="color: #c6c6c6;">New Book<br></h2>
+                <div class="form-group"><label>Name</label><input class="form-control" type="text" name="name" required="" maxlength="50"></div>
+                <div class="d-flex" style="margin: 0px 0px 16px;">
+                    <div class="form-group" style="margin: 0px;padding: 0px 30px 0px 0px;width: 100%;"><label>Author</label><input class="form-control" type="text" style="padding: 0px;" required="" name="author"></div>
+                    <div class="form-group d-flex d-xl-flex align-items-end align-items-xl-end" style="margin: 0px;"><select class="form-control" style="color: rgba(86,86,86,0.85);width: 156px;" required=""><option value="" selected="" id="test" hidden="" disabled="" color="#ba2575">Testament</option><option value="0">Old Testament</option><option value="1">New Testament</option></select></div>
                 </div>
-            </div>
+                <div class="form-group"><label>Summary</label><textarea class="form-control" style="height: 141px;" name="summary" required="" maxlength="4000"></textarea></div>
+                <div class="form-group d-flex d-xl-flex justify-content-center justify-content-sm-center justify-content-xl-center"
+                    style="width: 100%;">
+                    <div style="width: 50%;"><label>Start year</label><input class="form-control" type="number" style="width: 120px;" required="" max="9999" name="start"></div>
+                    <div><label>Completion year</label><input class="form-control" type="number" style="width: 120px;" max="9999" name="end"></div>
+                </div>
+                <div class="form-group"><label>First Audience and Destination</label><textarea class="form-control" maxlength="2000" name="audience"></textarea></div>
+                <div class="d-flex d-xl-flex justify-content-center justify-content-sm-center justify-content-xl-center">
+                    <div class="form-group" style="width: 50%;margin: 0px;"><label>Number of Chapters</label><input class="form-control" type="number" style="width: 130px;" max="999" required="" name="chapters"></div>
+                    <div class="form-group" style="margin: 0px;"><label>Order in Bible</label><input class="form-control" type="number" style="width: 130px;padding: 0px;" required="" max="99" name="order"></div>
+                </div>
+                <div class="form-group d-flex d-xl-flex justify-content-center justify-content-xl-center" style="margin: 30px 0px 0px 0px;width: 100%;"><button class="btn btn-secondary" type="submit" style="background-color: rgba(220,53,69,0.83);width: 109px;">SAVE</button></div>
+            </form>
         </div>
     </div>
     <div class="footer-dark">

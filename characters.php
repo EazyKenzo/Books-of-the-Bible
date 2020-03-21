@@ -1,3 +1,12 @@
+<?php
+    require 'db_connect.php';
+
+    $query = "SELECT * FROM person ORDER BY name";
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $characters = $statement->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -11,6 +20,7 @@
     <link rel="stylesheet" href="assets/css/Article-Clean.css">
     <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Blue.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
@@ -21,21 +31,28 @@
             <div
                 class="collapse navbar-collapse text-uppercase d-xl-flex justify-content-xl-end align-items-xl-center" id="navcol-1" style="font-size: 25px;">
                 <ul class="nav navbar-nav" style="color: rgb(255,255,255);">
-                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="books.html" style="margin: 20px;margin-left: 20px;">Books</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="people.html" style="margin: 20px;">Characters</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="books.php" style="margin: 20px;margin-left: 20px;">Books</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="characters.php" style="margin: 20px;">Characters</a></li>
                 </ul>
-        </div>
+            </div>
         </div>
     </nav>
     <div>
-        <h1 class="text-center">Characters of the Bible</h1>
+        <h1 class="text-center" style="height: 95px;">Characters of the Bible</h1>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div>
-                        <ul id="characterList" class="list"></ul>
+                        <ul id="characterList" class="list">
+                            <?php foreach ($characters as $character): ?>
+                                <li>
+                                    <p><?= $character['Name'] ?></p>
+                                </li>
+                            <?php endforeach ?>
+                        </ul>
                     </div>
                 </div>
+                <div class="col"><a href="edit_character.html" style="font-size: 20px;text-decoration: none;">Add a new character</a></div>
             </div>
         </div>
     </div>
@@ -47,8 +64,8 @@
                         <h3>Navigate&nbsp;</h3>
                         <ul>
                             <li><a href="index.html">Homepage</a></li>
-                            <li><a href="books.html">Books</a></li>
-                            <li><a href="people.html">People</a></li>
+                            <li><a href="books.php">Books</a></li>
+                            <li><a href="characters.php">Characters</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-3 item">

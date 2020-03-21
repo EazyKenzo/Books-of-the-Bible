@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/css/Article-Clean.css">
     <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Blue.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
@@ -21,20 +22,20 @@
             <div
                 class="collapse navbar-collapse text-uppercase d-xl-flex justify-content-xl-end align-items-xl-center" id="navcol-1" style="font-size: 25px;">
                 <ul class="nav navbar-nav" style="color: rgb(255,255,255);">
-                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="books.html" style="margin: 20px;margin-left: 20px;">Books</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="people.html" style="margin: 20px;">Characters</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="books.php" style="margin: 20px;margin-left: 20px;">Books</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="characters.php" style="margin: 20px;">Characters</a></li>
                 </ul>
         </div>
         </div>
     </nav>
     <div class="contact-clean" style="padding: 0px;">
-        <div style="background-image: url(&quot;assets/img/bible.jpg&quot;);background-size: cover;background-position: center;padding: 80px 0px;background-color: #384243;">
-            <form id="book_edit" method="post" style="background-color: rgba(56,66,67,0.76);color: rgba(45,45,45,0.85);">
+        <div style="background-image: url(&quot;assets/img/bible.jpg&quot;);background-size: cover;background-position: center;background-color: #384243;padding: 80px 0px;">
+            <form id="book_edit" method="post" style="background-color: rgba(56,66,67,0.76);color: rgba(45,45,45,0.85);" action="process.php">
                 <h2 class="text-center" style="color: #c6c6c6;">New Book<br></h2>
                 <div class="form-group"><label>Name</label><input class="form-control" type="text" name="name" required="" maxlength="50"></div>
                 <div class="d-flex" style="margin: 0px 0px 16px;">
-                    <div class="form-group" style="margin: 0px;padding: 0px 30px 0px 0px;width: 100%;"><label>Author</label><input class="form-control" type="text" style="padding: 0px;" required="" name="author"></div>
-                    <div class="form-group d-flex d-xl-flex align-items-end align-items-xl-end" style="margin: 0px;"><select class="form-control" style="color: rgba(86,86,86,0.85);width: 156px;" required=""><option value="" selected="" id="test" hidden="" disabled="" color="#ba2575">Testament</option><option value="0">Old Testament</option><option value="1">New Testament</option></select></div>
+                    <div class="form-group" style="margin: 0px;padding: 0px 30px 0px 0px;width: 100%;"><label>Author</label><input class="form-control" type="text" id="author" style="padding: 0px;" required="" name="author"></div>
+                    <div class="form-group d-flex d-xl-flex align-items-end align-items-xl-end" style="margin: 0px;"><select class="form-control" style="color: rgba(86,86,86,0.85);width: 156px;" required="" name="testament"><option value="" selected="" id="test" hidden="" disabled="" color="#ba2575">Testament</option><option value="0">Old Testament</option><option value="1">New Testament</option></select></div>
                 </div>
                 <div class="form-group"><label>Summary</label><textarea class="form-control" style="height: 141px;" name="summary" required="" maxlength="4000"></textarea></div>
                 <div class="form-group d-flex d-xl-flex justify-content-center justify-content-sm-center justify-content-xl-center"
@@ -47,8 +48,8 @@
                     <div class="form-group" style="width: 50%;margin: 0px;"><label>Number of Chapters</label><input class="form-control" type="number" style="width: 130px;" max="999" required="" name="chapters"></div>
                     <div class="form-group" style="margin: 0px;"><label>Order in Bible</label><input class="form-control" type="number" style="width: 130px;padding: 0px;" required="" max="99" name="order"></div>
                 </div>
-                <div class="form-group d-flex d-xl-flex justify-content-center justify-content-xl-center" style="margin: 30px 0px 0px 0px;width: 100%;"><button class="btn btn-secondary" type="submit" style="background-color: rgba(220,53,69,0.83);width: 109px;">SAVE</button></div>
-            </form>
+                <div class="form-group d-flex d-xl-flex justify-content-center justify-content-xl-center" style="margin: 30px 0px 0px 0px;width: 100%;"><button class="btn btn-secondary" id="bookButton" type="submit" style="background-color: rgba(220,53,69,0.83);width: 109px;">SAVE</button></div><input class="form-control" type="hidden" name="id" value="-1"><input class="form-control"
+                    type="hidden" name="operation" value="books"></form>
         </div>
     </div>
     <div class="footer-dark">
@@ -59,8 +60,8 @@
                         <h3>Navigate&nbsp;</h3>
                         <ul>
                             <li><a href="index.html">Homepage</a></li>
-                            <li><a href="books.html">Books</a></li>
-                            <li><a href="people.html">People</a></li>
+                            <li><a href="books.php">Books</a></li>
+                            <li><a href="characters.php">Characters</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-3 item">
@@ -82,6 +83,7 @@
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="C:\xampp\htdocs\files\Project\Books of the Bible\javascript.js"></script>
 </body>
 
 </html>

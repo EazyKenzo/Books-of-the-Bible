@@ -1324,110 +1324,113 @@
     </column>
     <column id="334" parent="327" name="Testament">
       <Position>3</Position>
-      <DataType>varchar(3)|0s</DataType>
+      <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="335" parent="327" name="Chapters">
       <Position>4</Position>
-      <DataType>int(2)|0s</DataType>
+      <DataType>int(3)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="336" parent="327" name="Recipient">
+    <column id="336" parent="327" name="AudienceDestination">
       <Position>5</Position>
-      <DataType>varchar(20)|0s</DataType>
+      <DataType>varchar(2000)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="337" parent="327" name="Description">
+    <column id="337" parent="327" name="Summary">
       <Position>6</Position>
-      <DataType>varchar(1000)|0s</DataType>
+      <DataType>varchar(4000)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="338" parent="327" name="Date">
+    <column id="338" parent="327" name="StartYear">
       <Position>7</Position>
+      <DataType>int(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="339" parent="327" name="CompletionYear">
+      <Position>8</Position>
       <DataType>int(4)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="339" parent="327" name="AuthorId">
-      <Position>8</Position>
+    <column id="340" parent="327" name="AuthorId">
+      <Position>9</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="340" parent="327" name="PRIMARY">
+    <column id="341" parent="327" name="BibleOrder">
+      <Position>10</Position>
+      <DataType>int(2)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="342" parent="327" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="341" parent="328" name="Id">
+    <column id="343" parent="328" name="Id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="342" parent="328" name="Content">
+    <column id="344" parent="328" name="Content">
       <Position>2</Position>
       <DataType>varchar(2000)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="343" parent="328" name="Visible">
+    <column id="345" parent="328" name="Visible">
       <Position>3</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="344" parent="328" name="BookId">
+    <column id="346" parent="328" name="BookId">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="345" parent="328" name="UserId">
+    <column id="347" parent="328" name="UserId">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="346" parent="328" name="PRIMARY">
+    <key id="348" parent="328" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="347" parent="329" name="Id">
+    <column id="349" parent="329" name="Id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="348" parent="329" name="Name">
+    <column id="350" parent="329" name="Name">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="349" parent="329" name="Nickname">
+    <column id="351" parent="329" name="Summary">
       <Position>3</Position>
-      <DataType>varchar(50)|0s</DataType>
+      <DataType>mediumtext|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="350" parent="329" name="Meaning">
+    <column id="352" parent="329" name="Meaning">
       <Position>4</Position>
-      <DataType>varchar(100)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="351" parent="329" name="Birth">
-      <Position>5</Position>
-      <DataType>int(4)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="352" parent="329" name="Death">
-      <Position>6</Position>
-      <DataType>int(4)|0s</DataType>
+      <DataType>varchar(1000)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="353" parent="329" name="PRIMARY">

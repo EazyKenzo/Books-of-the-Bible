@@ -1,3 +1,12 @@
+<?php
+    require 'db_connect.php';
+
+    $query = "SELECT * FROM book ORDER BY bibleorder";
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $books = $statement->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -11,6 +20,7 @@
     <link rel="stylesheet" href="assets/css/Article-Clean.css">
     <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Blue.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
@@ -21,8 +31,8 @@
             <div
                 class="collapse navbar-collapse text-uppercase d-xl-flex justify-content-xl-end align-items-xl-center" id="navcol-1" style="font-size: 25px;">
                 <ul class="nav navbar-nav" style="color: rgb(255,255,255);">
-                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="books.html" style="margin: 20px;margin-left: 20px;">Books</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="people.html" style="margin: 20px;">Characters</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="books.php" style="margin: 20px;margin-left: 20px;">Books</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="characters.php" style="margin: 20px;">Characters</a></li>
                 </ul>
         </div>
         </div>
@@ -34,17 +44,32 @@
                 <div class="col-md-6">
                     <h4>Old Testament</h4>
                     <div>
-                        <ul id="newList" class="list"></ul>
+                        <ul id="newList" class="list">
+                            <?php foreach ($books as $book):
+                                if ($book['testament'] === 0): ?>
+                                    <li>
+                                        <p><?= $book['name'] ?></p>
+                                    </li>
+                                <?php endif;
+                            endforeach ?>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <h4>New Testament</h4>
                     <div>
-                        <ul id="oldList" class="list"></ul>
+                        <ul id="oldList" class="list">
+                            <?php foreach ($books as $book):
+                                if ($book['testament'] === 1): ?>
+                                    <li>
+                                        <p><?= $book['name'] ?></p>
+                                    </li>
+                                <?php endif;
+                            endforeach ?>
+                        </ul>
                     </div>
                 </div>
-                <div class="col"><button class="btn btn-secondary" type="submit" style="background-color: rgba(108,117,125,0);color: rgb(0,123,255);" action="edit_book.html"><span style="text-decoration: underline;">Add a new book</span><br></button><a href="edit_book.html"
-                        style="font-size: 20px;">Add a new book</a><input type="hidden" name="method" value="create"></div>
+                <div class="col"><a href="edit_book.html?id=-1" style="font-size: 20px;">Add a new book</a></div>
             </div>
         </div>
     </div>
@@ -56,8 +81,8 @@
                         <h3>Navigate&nbsp;</h3>
                         <ul>
                             <li><a href="index.html">Homepage</a></li>
-                            <li><a href="books.html">Books</a></li>
-                            <li><a href="people.html">People</a></li>
+                            <li><a href="books.php">Books</a></li>
+                            <li><a href="characters.php">Characters</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-3 item">

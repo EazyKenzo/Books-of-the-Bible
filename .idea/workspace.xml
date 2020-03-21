@@ -39,6 +39,41 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="booksofthebible: schema" type="ebfa3cd1:MariaImplModel$Schema" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="booksofthebible@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="booksofthebible: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="book: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="booksofthebible@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="booksofthebible: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="book_comment: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="booksofthebible@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="booksofthebible: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="person: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="booksofthebible@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="booksofthebible: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="person_comment: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="booksofthebible@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="booksofthebible: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="user: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -56,7 +91,9 @@
     <property name="DatabaseDriversLRU" value="mysql&#10;mariadb" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="database.main" />
+    <property name="ignore.virus.scanning.warn.message" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -71,6 +108,16 @@
       <workItem from="1584243930708" duration="2585000" />
       <workItem from="1584585150676" duration="2323000" />
       <workItem from="1584587487035" duration="654000" />
+      <workItem from="1584732625255" duration="240000" />
+      <workItem from="1584737741893" duration="1828000" />
+      <workItem from="1584742838902" duration="566000" />
+      <workItem from="1584768253264" duration="602000" />
+      <workItem from="1584768865523" duration="1806000" />
+      <workItem from="1584771685183" duration="5082000" />
+      <workItem from="1584777464514" duration="210000" />
+      <workItem from="1584777708182" duration="11000" />
+      <workItem from="1584777730156" duration="530000" />
+      <workItem from="1584778805994" duration="5135000" />
     </task>
     <servers />
   </component>
@@ -78,25 +125,41 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="178" key="#Notifications" timestamp="1584585926719">
+    <state x="552" y="178" key="#Notifications" timestamp="1584777715018">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="178" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1584585926719" />
+    <state x="552" y="178" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1584777715018" />
     <state x="438" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584587513641">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="438" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584587513641" />
-    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1584586716698">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1584768525300">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1920.1040@0.0.1920.1040" timestamp="1584586716698" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1584586017064">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584768525300" />
+    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1584771798738">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1584586017064" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1584587491300">
+    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1920.1040@0.0.1920.1040" timestamp="1584771798738" />
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1584779628276">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584587491300" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584779628276" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1584777469745">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1584777469745" />
+    <state x="669" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1584771877089">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="669" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584771877089" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1584738285954">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584738285954" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1584774181558">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584774181558" />
   </component>
 </project>

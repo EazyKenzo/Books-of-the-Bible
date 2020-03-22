@@ -1,6 +1,9 @@
 <?php
     require 'db_connect.php';
 
+    $title = '';
+    $message = '';
+
     $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
     $operation = filter_input(INPUT_POST, 'operation', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
@@ -20,7 +23,7 @@
             $statement->execute();
 
             $title = 'Success';
-            $message = 'Book added successfully.';
+            $message = 'Character added successfully.';
         }
         else
         {
@@ -33,7 +36,7 @@
             $statement->execute();
 
             $title = 'Success';
-            $message = 'Book modified successfully.';
+            $message = 'Character modified successfully.';
         }
     }
     elseif ($operation === "books")
@@ -48,7 +51,35 @@
         $authorName = filter_input(INPUT_POST, 'author', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $order = filter_input(INPUT_POST, 'order', FILTER_SANITIZE_NUMBER_INT);
 
-        
+        $query = "SELECT Id FROM person WHERE Name = :authorName";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':authorName', $authorName);
+        $statement->execute();
+        $authorId = (int)$statement->fetch()[0];
+
+        var_dump($authorId);
+
+        if ($id < 0)
+        {
+            $query = "INSERT INTO book (Name, Testament, Chapters, AudienceDestination, Summary, StartYear, CompletionYear, AuthorId, BibleOrder)
+                values (:name, :testament, :chapters, :audience, :summary, :start, :end, :authorId, :order)";
+            $statement = $db->prepare($query);
+            $bind_values = ['name' => $name, 'testament' => $testament, 'chapters' => $chapters, 'audience' => $audience, 'summary' => $summary, 'start' => $start, 'end' => $end, 'authorId' => $authorId, 'order' => $order];
+            $statement->execute($bind_values);
+
+            $title = 'Success';
+            $message = 'Book added successfully.';
+        }
+        else
+        {
+            $query = "UPDATE book SET Name = :name, Testament = :testament, Chapters= :chapters, AudienceDestination = :audience, Summary = :summary, StartYear = :start, CompletionYear = :end, AuthorId = :authorId, BibleOrder = :order WHERE id = :id";
+            $statement = $db->prepare($query);
+            $bind_values = ['name' => $name, 'testament' => $testament, 'chapters' => $chapters, 'audience' => $audience, 'summary' => $summary, 'start' => $start, 'end' => $end, 'authorId' => $authorId, 'order' => $order];
+            $statement->execute($bind_values);
+
+            $title = 'Success';
+            $message = 'Book modified successfully.';
+        }
     }
 ?>
 

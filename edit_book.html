@@ -34,19 +34,21 @@
                 <h2 class="text-center" style="color: #c6c6c6;">New Book<br></h2>
                 <div class="form-group"><label>Name</label><input class="form-control" type="text" name="name" required="" maxlength="50"></div>
                 <div class="d-flex" style="margin: 0px 0px 16px;">
-                    <div class="form-group" style="margin: 0px;padding: 0px 30px 0px 0px;width: 100%;"><label>Author</label><input class="form-control" type="text" id="author" style="padding: 0px;" required="" name="author"></div>
-                    <div class="form-group d-flex d-xl-flex align-items-end align-items-xl-end" style="margin: 0px;"><select class="form-control" style="color: rgba(86,86,86,0.85);width: 156px;" required="" name="testament"><option value="" selected="" id="test" hidden="" disabled="" color="#ba2575">Testament</option><option value="0">Old Testament</option><option value="1">New Testament</option></select></div>
+                    <div class="form-group" style="margin: 0px;padding: 0px 20px 0px 0px;width: 100%;height: 90px;"><label style="margin: 0px;">Author</label><input class="form-control" type="text" id="author" required="" name="author">
+                        <p class="text-center" id="error" style="margin: 0px;color: #c51111;">Author doesn't exist</p>
+                    </div>
+                    <div class="form-group d-flex d-xl-flex align-items-center align-items-sm-center align-items-lg-center align-items-xl-center" style="margin: 0px;"><select class="form-control" style="color: rgba(86,86,86,0.85);width: 156px;" required="" name="testament"><option value="" selected="" id="test" hidden="" disabled="" color="#ba2575">Testament</option><option value="0">Old Testament</option><option value="1">New Testament</option></select></div>
                 </div>
                 <div class="form-group"><label>Summary</label><textarea class="form-control" style="height: 141px;" name="summary" required="" maxlength="4000"></textarea></div>
                 <div class="form-group d-flex d-xl-flex justify-content-center justify-content-sm-center justify-content-xl-center"
                     style="width: 100%;">
-                    <div style="width: 50%;"><label>Start year</label><input class="form-control" type="number" style="width: 120px;" required="" max="9999" name="start"></div>
-                    <div><label>Completion year</label><input class="form-control" type="number" style="width: 120px;" max="9999" name="end"></div>
+                    <div style="width: 50%;"><label>Start year</label><input class="form-control" type="number" style="width: 120px;margin-right: 10px;" required="" max="9999" name="start"></div>
+                    <div><label>Completion year</label><input class="form-control" type="number" style="width: 120px;margin-left: 10px;" max="9999" name="end"></div>
                 </div>
                 <div class="form-group"><label>First Audience and Destination</label><textarea class="form-control" maxlength="2000" name="audience"></textarea></div>
                 <div class="d-flex d-xl-flex justify-content-center justify-content-sm-center justify-content-xl-center">
-                    <div class="form-group" style="width: 50%;margin: 0px;"><label>Number of Chapters</label><input class="form-control" type="number" style="width: 130px;" max="999" required="" name="chapters"></div>
-                    <div class="form-group" style="margin: 0px;"><label>Order in Bible</label><input class="form-control" type="number" style="width: 130px;padding: 0px;" required="" max="99" name="order"></div>
+                    <div class="form-group" style="width: 50%;margin: 0px;"><label>Number of Chapters</label><input class="form-control" type="number" style="width: 120px;margin-right: 10px;" max="999" required="" name="chapters"></div>
+                    <div class="form-group d-flex flex-column justify-content-end" style="margin: 0px;"><label>Order in Bible</label><input class="form-control d-flex" type="number" required="" max="99" name="order" style="width: 120px;margin: 0px 0px 0px 10px;"></div>
                 </div>
                 <div class="form-group d-flex d-xl-flex justify-content-center justify-content-xl-center" style="margin: 30px 0px 0px 0px;width: 100%;"><button class="btn btn-secondary" id="bookButton" type="submit" style="background-color: rgba(220,53,69,0.83);width: 109px;">SAVE</button></div><input class="form-control" type="hidden" name="id" value="-1"><input class="form-control"
                     type="hidden" name="operation" value="books"></form>
@@ -80,10 +82,10 @@
                 <p class="copyright">Markus Thiessen © 2020</p>
             </div>
         </footer>
-    </div>
+    </div><script src="assets/js/jquery.js"></script>
+<script src="assets/js/javascript.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="C:\xampp\htdocs\files\Project\Books of the Bible\javascript.js"></script>
 </body>
 
 </html>

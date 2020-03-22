@@ -48,7 +48,7 @@
         $authorName = filter_input(INPUT_POST, 'author', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $order = filter_input(INPUT_POST, 'order', FILTER_SANITIZE_NUMBER_INT);
 
-
+        
     }
 ?>
 

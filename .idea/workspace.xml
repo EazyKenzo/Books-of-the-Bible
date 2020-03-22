@@ -117,7 +117,8 @@
       <workItem from="1584777464514" duration="210000" />
       <workItem from="1584777708182" duration="11000" />
       <workItem from="1584777730156" duration="530000" />
-      <workItem from="1584778805994" duration="5135000" />
+      <workItem from="1584778805994" duration="5662000" />
+      <workItem from="1584833841463" duration="11846000" />
     </task>
     <servers />
   </component>
@@ -129,6 +130,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1584777715018" />
+    <state x="810" y="182" key="#SQL_Dialects" timestamp="1584842318555">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="810" y="182" key="#SQL_Dialects/0.0.1920.1040@0.0.1920.1040" timestamp="1584842318555" />
     <state x="438" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584587513641">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -157,6 +162,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584738285954" />
+    <state x="1005" y="244" key="run.anything.popup" timestamp="1584842133579">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1005" y="244" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584842133579" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1584774181558">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -46,9 +46,9 @@
                     <div>
                         <ul id="newList" class="list">
                             <?php foreach ($books as $book):
-                                if ($book['testament'] === 0): ?>
+                                if ($book['Testament'] === '0'): ?>
                                     <li>
-                                        <p><?= $book['name'] ?></p>
+                                        <p><?= $book['Name'] ?></p>
                                     </li>
                                 <?php endif;
                             endforeach ?>
@@ -60,16 +60,16 @@
                     <div>
                         <ul id="oldList" class="list">
                             <?php foreach ($books as $book):
-                                if ($book['testament'] === 1): ?>
+                                if ($book['Testament'] === '1'): ?>
                                     <li>
-                                        <p><?= $book['name'] ?></p>
+                                        <p><?= $book['Name'] ?></p>
                                     </li>
                                 <?php endif;
                             endforeach ?>
                         </ul>
                     </div>
                 </div>
-                <div class="col"><a href="edit_book.html?id=-1" style="font-size: 20px;">Add a new book</a></div>
+                <div class="col"><a href="edit_book.php" style="font-size: 20px;">Add a new book</a></div>
             </div>
         </div>
     </div>

@@ -1,10 +1,20 @@
 <?php
-    require 'db_connect.php';
+require 'db_connect.php';
 
-    $query = "SELECT * FROM person ORDER BY name";
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+$set = false;
+
+if (isset($id))
+{
+    $set = true;
+
+    $query = "SELECT * FROM person WHERE id = :id";
     $statement = $db->prepare($query);
+    $statement->bindValue(':id', $id);
     $statement->execute();
-    $characters = $statement->fetchAll();
+    $character = $statement->fetchAll()[0];
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,26 +44,18 @@
                     <li class="nav-item" role="presentation"><a class="nav-link text-white" href="books.php" style="margin: 20px;margin-left: 20px;">Books</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-white" href="characters.php" style="margin: 20px;">Characters</a></li>
                 </ul>
-            </div>
+        </div>
         </div>
     </nav>
-    <div>
-        <h1 class="text-center" style="height: 95px;">Characters of the Bible</h1>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div>
-                        <ul id="characterList" class="list">
-                            <?php foreach ($characters as $character): ?>
-                                <li>
-                                    <p><?= $character['Name'] ?></p>
-                                </li>
-                            <?php endforeach ?>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col"><a href="edit_character.php" style="font-size: 20px;text-decoration: none;">Add a new character</a></div>
-            </div>
+    <div class="contact-clean" style="padding: 0px;background-color: #384243;">
+        <div style="background-image: url(&quot;assets/img/bible.jpg&quot;);background-size: cover;background-position: center;padding: 80px 0px;">
+            <form id="book_edit" method="post" style="background-color: rgba(56,66,67,0.76);color: rgba(45,45,45,0.85);" action="process.php">
+                <h2 class="text-center" style="color: #c6c6c6;">New Character<br></h2>
+                <div class="form-group"><label>Name</label><input class="form-control" type="text" name="name" required="" maxlength="50" <?php if($set):?> value="<?= $character['Name'] ?>"<?php endif ?>></div>
+                <div class="form-group"><label>Summary</label><textarea class="form-control" style="height: 141px;" name="summary" required="" maxlength="4000"><?php if($set):?><?= $character['Summary'] ?><?php endif ?></textarea></div>
+                <div class="form-group"><label>Name meaning</label><input class="form-control" type="text" name="meaning" maxlength="50" <?php if($set):?> value="<?= $character['Meaning'] ?>"<?php endif ?>></div>
+                <div class="form-group d-flex d-xl-flex justify-content-center justify-content-xl-center" style="margin: 30px 0px 0px 0px;width: 100%;"><button class="btn btn-secondary" type="submit" style="background-color: rgba(220,53,69,0.83);width: 109px;">SAVE</button></div><input class="form-control" type="hidden" name="id" value="<?php if($set):?><?= $id ?><?php else: ?>-1<?php endif ?>"><input class="form-control" type="hidden" name="operation"
+                    value="characters"></form>
         </div>
     </div>
     <div class="footer-dark">

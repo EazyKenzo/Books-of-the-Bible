@@ -1,12 +1,3 @@
-<?php
-    require 'db_connect.php';
-
-    $query = "SELECT * FROM person ORDER BY name";
-    $statement = $db->prepare($query);
-    $statement->execute();
-    $characters = $statement->fetchAll();
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -34,25 +25,17 @@
                     <li class="nav-item" role="presentation"><a class="nav-link text-white" href="books.php" style="margin: 20px;margin-left: 20px;">Books</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-white" href="characters.php" style="margin: 20px;">Characters</a></li>
                 </ul>
-            </div>
+        </div>
         </div>
     </nav>
-    <div>
-        <h1 class="text-center" style="height: 95px;">Characters of the Bible</h1>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div>
-                        <ul id="characterList" class="list">
-                            <?php foreach ($characters as $character): ?>
-                                <li>
-                                    <p><?= $character['Name'] ?></p>
-                                </li>
-                            <?php endforeach ?>
-                        </ul>
-                    </div>
+    <div class="highlight-blue" style="padding: 0px;background-color: rgb(56,66,67);">
+        <div style="background-image: url(&quot;assets/img/bible.jpg&quot;);height: 1070px;padding: 80px 0px;background-size: cover;background-position: center;">
+            <div class="container" style="width: 480px;height: 910px;padding: 40px;background-color: rgba(56,66,67,0.76);">
+                <div class="intro">
+                    <h2 class="text-center" id="heading">Success</h2>
+                    <p class="text-center" id="message">Book added succesfully.</p>
                 </div>
-                <div class="col"><a href="edit_character.php" style="font-size: 20px;text-decoration: none;">Add a new character</a></div>
+                <div class="buttons"><a class="btn btn-primary" role="button" id="return" style="background-color: rgba(220,53,69,0.83);border: none;">Return to books</a></div>
             </div>
         </div>
     </div>

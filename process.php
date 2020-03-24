@@ -1,86 +1,84 @@
 <?php
-    require 'db_connect.php';
+require 'db_connect.php';
 
-    $title = '';
-    $message = '';
+$title = '';
+$message = '';
 
-    $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
-    $operation = filter_input(INPUT_POST, 'operation', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+$operation = filter_input(INPUT_POST, 'operation', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-    if ($operation === "characters")
+if ($operation === "characters")
+{
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $summary = filter_input(INPUT_POST, 'summary', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $meaning = filter_input(INPUT_POST, 'meaning', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    if ($id < 0)
     {
-        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $summary = filter_input(INPUT_POST, 'summary', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $meaning = filter_input(INPUT_POST, 'meaning', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-        if ($id < 0)
-        {
-            $query = "INSERT INTO person (Name, Summary, Meaning) values (:name, :summary, :meaning)";
-            $statement = $db->prepare($query);
-            $statement->bindValue(':name', $name);
-            $statement->bindValue(':summary', $summary);
-            $statement->bindValue(':meaning', $meaning);
-            $statement->execute();
-
-            $title = 'Success';
-            $message = 'Character added successfully.';
-        }
-        else
-        {
-            $query = "UPDATE person SET Name = :name, Summary = :summary, Meaning = :meaning WHERE id = :id";
-            $statement = $db->prepare($query);
-            $statement->bindValue(':name', $name);
-            $statement->bindValue(':summary', $summary);
-            $statement->bindValue(':meaning', $meaning);
-            $statement->bindValue(':id', $id, PDO::PARAM_INT);
-            $statement->execute();
-
-            $title = 'Success';
-            $message = 'Character modified successfully.';
-        }
-    }
-    elseif ($operation === "books")
-    {
-        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $testament = filter_input(INPUT_POST, 'testament', FILTER_SANITIZE_NUMBER_INT);
-        $chapters = filter_input(INPUT_POST, 'chapters', FILTER_SANITIZE_NUMBER_INT);
-        $audience = filter_input(INPUT_POST, 'audience', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $summary = filter_input(INPUT_POST, 'summary', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $start = filter_input(INPUT_POST, 'start', FILTER_SANITIZE_NUMBER_INT);
-        $end = filter_input(INPUT_POST, 'end', FILTER_SANITIZE_NUMBER_INT);
-        $authorName = filter_input(INPUT_POST, 'author', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $order = filter_input(INPUT_POST, 'order', FILTER_SANITIZE_NUMBER_INT);
-
-        $query = "SELECT Id FROM person WHERE Name = :authorName";
+        $query = "INSERT INTO person (Name, Summary, Meaning) values (:name, :summary, :meaning)";
         $statement = $db->prepare($query);
-        $statement->bindValue(':authorName', $authorName);
+        $statement->bindValue(':name', $name);
+        $statement->bindValue(':summary', $summary);
+        $statement->bindValue(':meaning', $meaning);
         $statement->execute();
-        $authorId = (int)$statement->fetch()[0];
 
-        var_dump($authorId);
-
-        if ($id < 0)
-        {
-            $query = "INSERT INTO book (Name, Testament, Chapters, AudienceDestination, Summary, StartYear, CompletionYear, AuthorId, BibleOrder)
-                values (:name, :testament, :chapters, :audience, :summary, :start, :end, :authorId, :order)";
-            $statement = $db->prepare($query);
-            $bind_values = ['name' => $name, 'testament' => $testament, 'chapters' => $chapters, 'audience' => $audience, 'summary' => $summary, 'start' => $start, 'end' => $end, 'authorId' => $authorId, 'order' => $order];
-            $statement->execute($bind_values);
-
-            $title = 'Success';
-            $message = 'Book added successfully.';
-        }
-        else
-        {
-            $query = "UPDATE book SET Name = :name, Testament = :testament, Chapters= :chapters, AudienceDestination = :audience, Summary = :summary, StartYear = :start, CompletionYear = :end, AuthorId = :authorId, BibleOrder = :order WHERE id = :id";
-            $statement = $db->prepare($query);
-            $bind_values = ['name' => $name, 'testament' => $testament, 'chapters' => $chapters, 'audience' => $audience, 'summary' => $summary, 'start' => $start, 'end' => $end, 'authorId' => $authorId, 'order' => $order];
-            $statement->execute($bind_values);
-
-            $title = 'Success';
-            $message = 'Book modified successfully.';
-        }
+        $title = 'Success';
+        $message = 'Character added successfully.';
     }
+    else
+    {
+        $query = "UPDATE person SET Name = :name, Summary = :summary, Meaning = :meaning WHERE id = :id";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':name', $name);
+        $statement->bindValue(':summary', $summary);
+        $statement->bindValue(':meaning', $meaning);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        $title = 'Success';
+        $message = 'Character modified successfully.';
+    }
+}
+elseif ($operation === "books")
+{
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $testament = filter_input(INPUT_POST, 'testament', FILTER_SANITIZE_NUMBER_INT);
+    $chapters = filter_input(INPUT_POST, 'chapters', FILTER_SANITIZE_NUMBER_INT);
+    $audience = filter_input(INPUT_POST, 'audience', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $summary = filter_input(INPUT_POST, 'summary', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $start = filter_input(INPUT_POST, 'start', FILTER_SANITIZE_NUMBER_INT);
+    $end = filter_input(INPUT_POST, 'end', FILTER_SANITIZE_NUMBER_INT);
+    $authorName = filter_input(INPUT_POST, 'author', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $order = filter_input(INPUT_POST, 'order', FILTER_SANITIZE_NUMBER_INT);
+
+    $query = "SELECT Id FROM person WHERE Name = :authorName";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':authorName', $authorName);
+    $statement->execute();
+    $authorId = (int)$statement->fetch()[0];
+
+    if ($id < 0)
+    {
+        $query = "INSERT INTO book (Name, Testament, Chapters, AudienceDestination, Summary, StartYear, CompletionYear, AuthorId, BibleOrder)
+            values (:name, :testament, :chapters, :audience, :summary, :start, :end, :authorId, :order)";
+        $statement = $db->prepare($query);
+        $bind_values = ['name' => $name, 'testament' => $testament, 'chapters' => $chapters, 'audience' => $audience, 'summary' => $summary, 'start' => $start, 'end' => $end, 'authorId' => $authorId, 'order' => $order];
+        $statement->execute($bind_values);
+
+        $title = 'Success';
+        $message = 'Book added successfully.';
+    }
+    else
+    {
+        $query = "UPDATE book SET Name = :name, Testament = :testament, Chapters= :chapters, AudienceDestination = :audience, Summary = :summary, StartYear = :start, CompletionYear = :end, AuthorId = :authorId, BibleOrder = :order WHERE id = :id";
+        $statement = $db->prepare($query);
+        $bind_values = ['name' => $name, 'testament' => $testament, 'chapters' => $chapters, 'audience' => $audience, 'summary' => $summary, 'start' => $start, 'end' => $end, 'authorId' => $authorId, 'order' => $order, 'id' => $id];
+        $statement->execute($bind_values);
+
+        $title = 'Success';
+        $message = 'Book modified successfully.';
+    }
+}
 ?>
 
 <!DOCTYPE html>

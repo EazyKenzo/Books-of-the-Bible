@@ -29,5 +29,4 @@ function load() {
     }, false);
 }
 
-// The only event handler when page is loaded
 document.addEventListener('DOMContentLoaded', load);

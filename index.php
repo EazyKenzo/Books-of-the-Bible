@@ -1,3 +1,8 @@
+<?php
+require 'db_connect.php';
+require 'login/vendor/autoload.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -8,6 +13,7 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amaranth">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Article-Clean.css">
     <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Footer-Dark.css">
@@ -18,14 +24,18 @@
 
 <body style="background-color: rgb(56,66,67);color: #ffffff;font-family: Amaranth, sans-serif;">
     <nav class="navbar navbar-light navbar-expand-md">
-        <div class="container-fluid"><a class="navbar-brand" href="index.html" style="font-size: 56px;color: #ffffff;">The Bible</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse text-uppercase d-xl-flex justify-content-xl-end align-items-xl-center" id="navcol-1" style="font-size: 25px;">
-                <ul class="nav navbar-nav" style="color: rgb(255,255,255);">
-                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="books.php" style="margin: 20px;margin-left: 20px;">Books</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="characters.php" style="margin: 20px;">Characters</a></li>
+        <div class="container-fluid"><a class="navbar-brand" href="index.php" style="background-image: url(&quot;assets/img/icon.png&quot;);background-repeat: no-repeat;background-size: 80%;width: 130px;background-position: center;height: 150px;"></a><button data-toggle="collapse"
+                class="navbar-toggler" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-2">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="books.php" style="color: rgba(255,255,255,0.67);font-size: 30px;margin: 10px;">Books</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="characters.php" style="color: rgba(255,255,255,0.67);margin: 10px;font-size: 30px;">Characters</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="color: rgba(255,255,255,0.67);font-size: 30px;margin: 10px;">Users</a></li>
                 </ul>
-        </div>
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="<?php if ($auth->isLoggedIn()): ?>logout.php<?php else: ?>login.php<?php endif ?>" style="color: rgba(255,255,255,0.67);font-size: 20px;"><?php if ($auth->isLoggedIn()): ?>Log out<?php else: ?>Log in<?php endif ?></a></li>
+                </ul>
+            </div>
         </div>
     </nav>
     <div class="article-clean" style="background-color: rgb(56,66,67);">
@@ -54,7 +64,7 @@
                     <div class="col-sm-6 col-md-3 item">
                         <h3>Navigate&nbsp;</h3>
                         <ul>
-                            <li><a href="index.html">Homepage</a></li>
+                            <li><a href="index.php">Homepage</a></li>
                             <li><a href="books.php">Books</a></li>
                             <li><a href="characters.php">Characters</a></li>
                         </ul>
@@ -62,7 +72,7 @@
                     <div class="col-sm-6 col-md-3 item">
                         <h3>About</h3>
                         <ul>
-                            <li><a href="about.html">Developer</a></li>
+                            <li><a href="#">Developer</a></li>
                             <li><a href="https://catalogue.rrc.ca/Programs/WPG/Fulltime/BUSGF-DP/CoursesAndDescriptions/WEBD-2008">Program</a></li>
                             <li><a href="https://www.rrc.ca/">College</a></li>
                         </ul>

@@ -1,25 +1,35 @@
 <?php
 require 'db_connect.php';
+require 'login/vendor/autoload.php';
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-
 $set = false;
+$userId = $auth->getUserId();
 
-if (isset($id))
-{
-    $set = true;
+if (isset($userId)) {
+    if ($auth->admin()->doesUserHaveRole($userId, \Delight\Auth\Role::ADMIN)) {
+        if (isset($id)) {
+            $set = true;
 
-    $query = "SELECT * FROM book WHERE id = :id";
-    $statement = $db->prepare($query);
-    $statement->bindValue(':id', $id);
-    $statement->execute();
-    $book = $statement->fetchAll()[0];
+            $query = "SELECT * FROM book WHERE id = :id";
+            $statement = $db->prepare($query);
+            $statement->bindValue(':id', $id);
+            $statement->execute();
+            $book = $statement->fetchAll()[0];
 
-    $query = "SELECT Name FROM person WHERE id = :authorId";
-    $statement = $db->prepare($query);
-    $statement->bindValue(':authorId', $book['AuthorId']);
-    $statement->execute();
-    $author = $statement->fetch()[0];
+            $query = "SELECT Name FROM person WHERE id = :authorId";
+            $statement = $db->prepare($query);
+            $statement->bindValue(':authorId', $book['AuthorId']);
+            $statement->execute();
+            $author = $statement->fetch()[0];
+        }
+    }
+    else {
+        header("Location: index.php");
+    }
+}
+else {
+    header("Location: login.php");
 }
 ?>
 
@@ -42,17 +52,21 @@ if (isset($id))
 </head>
 
 <body style="background-color: rgb(56,66,67);color: #ffffff;font-family: Amaranth, sans-serif;">
-    <nav class="navbar navbar-light navbar-expand-md">
-        <div class="container-fluid"><a class="navbar-brand" href="index.html" style="font-size: 56px;color: #ffffff;">The Bible</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse text-uppercase d-xl-flex justify-content-xl-end align-items-xl-center" id="navcol-1" style="font-size: 25px;">
-                <ul class="nav navbar-nav" style="color: rgb(255,255,255);">
-                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="books.php" style="margin: 20px;margin-left: 20px;">Books</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="characters.php" style="margin: 20px;">Characters</a></li>
-                </ul>
+<nav class="navbar navbar-light navbar-expand-md">
+    <div class="container-fluid"><a class="navbar-brand" href="index.php" style="background-image: url(&quot;assets/img/icon.png&quot;);background-repeat: no-repeat;background-size: 80%;width: 130px;background-position: center;height: 150px;"></a><button data-toggle="collapse"
+                                                                                                                                                                                                                                                               class="navbar-toggler" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-2">
+            <ul class="nav navbar-nav mr-auto">
+                <li class="nav-item" role="presentation"><a class="nav-link active" href="books.php" style="color: rgba(255,255,255,0.67);font-size: 30px;margin: 10px;">Books</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="characters.php" style="color: rgba(255,255,255,0.67);margin: 10px;font-size: 30px;">Characters</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="color: rgba(255,255,255,0.67);font-size: 30px;margin: 10px;">Users</a></li>
+            </ul>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item" role="presentation"><a class="nav-link" href="<?php if ($auth->isLoggedIn()): ?>logout.php<?php else: ?>login.php<?php endif ?>" style="color: rgba(255,255,255,0.67);font-size: 20px;"><?php if ($auth->isLoggedIn()): ?>Log out<?php else: ?>Log in<?php endif ?></a></li>
+            </ul>
         </div>
-        </div>
-    </nav>
+    </div>
+</nav>
     <div class="contact-clean" style="padding: 0px;background-color: #384243;">
         <div style="padding: 80px 0px;background-image: url(&quot;assets/img/bible.jpg&quot;);background-size: cover;background-position: center;">
             <form id="book_edit" method="post" style="background-color: rgba(56,66,67,0.76);color: rgba(45,45,45,0.85);" action="process.php">
@@ -107,8 +121,8 @@ if (isset($id))
                 <p class="copyright">Markus Thiessen © 2020</p>
             </div>
         </footer>
-    </div><script src="assets/js/jquery.js"></script>
-<script src="assets/js/javascript.js"></script>
+    </div><script src="Javascript/jquery.js"></script>
+<script src="Javascript/book_validation.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>

@@ -1,13 +1,12 @@
 <?php
-    define('DB_DSN','mysql:host=localhost;dbname=booksofthebible');
-    define('DB_USER','projectuser');
-    define('DB_PASS','cation34');
-    
-    try {
-        // Create a PDO object called $db.
-        $db = new PDO(DB_DSN, DB_USER, DB_PASS);
-    } catch (PDOException $e) {
-        print "Error: " . $e->getMessage();
-        die(); // Force execution to stop on errors.
-    }
+require 'login/vendor/autoload.php';
+
+try {
+    $db = new PDO('mysql:dbname=booksofthebible;host=localhost;charset=utf8mb4', 'projectuser', 'cation34');
+} catch (PDOException $e) {
+    print "Error: " . $e->getMessage();
+    die();
+}
+
+$auth = new \Delight\Auth\Auth($db);
 ?>

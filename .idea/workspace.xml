@@ -7,7 +7,8 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/login/composer.json</pharConfigPath>
     <execution>
       <executable />
     </execution>
@@ -44,41 +45,28 @@
         <item name="booksofthebible@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="booksofthebible: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="book: table" type="dbc44a63:MariaImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="booksofthebible@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="booksofthebible: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="book_comment: table" type="dbc44a63:MariaImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="booksofthebible@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="booksofthebible: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="person: table" type="dbc44a63:MariaImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="booksofthebible@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="booksofthebible: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="person_comment: table" type="dbc44a63:MariaImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="booksofthebible@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="booksofthebible: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="user: table" type="dbc44a63:MariaImplModel$Table" />
+        <item name="users: table" type="dbc44a63:MariaImplModel$Table" />
       </path>
     </expand>
     <select />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="localhost" id="00010739-73ca-41c9-bfe7-7d09eedbff28" name="localhost" port="31337" />
+    </servers>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
+    <include_path>
+      <path value="$PROJECT_DIR$/login/vendor/delight-im/auth" />
+      <path value="$PROJECT_DIR$/login/vendor/delight-im/base64" />
+      <path value="$PROJECT_DIR$/login/vendor/delight-im/cookie" />
+      <path value="$PROJECT_DIR$/login/vendor/delight-im/db" />
+      <path value="$PROJECT_DIR$/login/vendor/delight-im/http" />
+      <path value="$PROJECT_DIR$/login/vendor/composer" />
+    </include_path>
   </component>
   <component name="ProjectId" id="1Z9GWPI3fBH2VwyMD1N1a6xUPLC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -92,8 +80,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../php/php.exe" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -120,7 +108,14 @@
       <workItem from="1584778805994" duration="5662000" />
       <workItem from="1584833841463" duration="11846000" />
       <workItem from="1584852020636" duration="659000" />
-      <workItem from="1585082785859" duration="6271000" />
+      <workItem from="1585082785859" duration="6875000" />
+      <workItem from="1585094785737" duration="2349000" />
+      <workItem from="1585097218825" duration="442000" />
+      <workItem from="1585098482131" duration="557000" />
+      <workItem from="1585099051585" duration="314000" />
+      <workItem from="1585100193664" duration="5633000" />
+      <workItem from="1585139510334" duration="8187000" />
+      <workItem from="1585159391175" duration="947000" />
     </task>
     <servers />
   </component>
@@ -128,6 +123,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="608" y="213" key="#CLI_Interpreters" timestamp="1585095079194">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="608" y="213" key="#CLI_Interpreters/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585095079194" />
     <state x="552" y="178" key="#Notifications" timestamp="1584777715018">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -140,10 +139,63 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="438" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584587513641" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1584768525300">
+    <state x="703" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585146305803">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="703" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585146305803" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1585095043075">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585095043075" />
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584768525300" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1585106037458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585106037458" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1585106037458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585106037458" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1585106037458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585106037458" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1585106037458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585106037458" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1585106037458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585106037458" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1585106037458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585106037458" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1585106037458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585106037458" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1585106037458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585106037458" />
+    <state width="1877" height="348" key="GridCell.Tab.2.bottom" timestamp="1585106037458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585106037458" />
+    <state width="1877" height="348" key="GridCell.Tab.2.center" timestamp="1585106037458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.center/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585106037458" />
+    <state width="1877" height="348" key="GridCell.Tab.2.left" timestamp="1585106037458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.left/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585106037458" />
+    <state width="1877" height="348" key="GridCell.Tab.2.right" timestamp="1585106037458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.right/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585106037458" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1584771798738">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -152,9 +204,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584779628276" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1584777469745">
+    <state x="461" y="162" key="SettingsEditor" timestamp="1585097297430">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/1920.4.1920.1080@0.0.1920.1040" timestamp="1585097297430" />
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1584777469745" />
     <state x="669" y="161" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1584771877089">
       <screen x="0" y="0" width="1920" height="1040" />

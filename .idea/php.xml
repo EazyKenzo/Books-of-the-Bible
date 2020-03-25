@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/login/vendor/delight-im/auth" />
+      <path value="$PROJECT_DIR$/login/vendor/delight-im/base64" />
+      <path value="$PROJECT_DIR$/login/vendor/delight-im/cookie" />
+      <path value="$PROJECT_DIR$/login/vendor/delight-im/db" />
+      <path value="$PROJECT_DIR$/login/vendor/delight-im/http" />
+      <path value="$PROJECT_DIR$/login/vendor/composer" />
+    </include_path>
+  </component>
+</project>

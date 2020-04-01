@@ -52,21 +52,7 @@ else {
 </head>
 
 <body style="background-color: rgb(56,66,67);color: #ffffff;font-family: Amaranth, sans-serif;">
-<nav class="navbar navbar-light navbar-expand-md">
-    <div class="container-fluid"><a class="navbar-brand" href="index.php" style="background-image: url(&quot;assets/img/icon.png&quot;);background-repeat: no-repeat;background-size: 80%;width: 130px;background-position: center;height: 150px;"></a><button data-toggle="collapse"
-                                                                                                                                                                                                                                                               class="navbar-toggler" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navcol-2">
-            <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item" role="presentation"><a class="nav-link active" href="books.php" style="color: rgba(255,255,255,0.67);font-size: 30px;margin: 10px;">Books</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="characters.php" style="color: rgba(255,255,255,0.67);margin: 10px;font-size: 30px;">Characters</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="color: rgba(255,255,255,0.67);font-size: 30px;margin: 10px;">Users</a></li>
-            </ul>
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item" role="presentation"><a class="nav-link" href="<?php if ($auth->isLoggedIn()): ?>logout.php<?php else: ?>login.php<?php endif ?>" style="color: rgba(255,255,255,0.67);font-size: 20px;"><?php if ($auth->isLoggedIn()): ?>Log out<?php else: ?>Log in<?php endif ?></a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    <?php require 'header.php' ?>
     <div class="contact-clean" style="padding: 0px;background-color: #384243;">
         <div style="padding: 80px 0px;background-image: url(&quot;assets/img/bible.jpg&quot;);background-size: cover;background-position: center;">
             <form id="book_edit" method="post" style="background-color: rgba(56,66,67,0.76);color: rgba(45,45,45,0.85);" action="process.php">
@@ -89,40 +75,19 @@ else {
                     <div class="form-group" style="width: 50%;margin: 0px;"><label>Number of Chapters</label><input class="form-control" type="number" style="width: 120px;margin-right: 10px;" max="999" required="" name="chapters" <?php if($set):?> value="<?= $book['Chapters'] ?>"<?php endif ?>></div>
                     <div class="form-group d-flex flex-column justify-content-end" style="margin: 0px;"><label>Order in Bible</label><input class="form-control d-flex" type="number" required="" max="99" name="order" style="width: 120px;margin: 0px 0px 0px 10px;" <?php if($set):?> value="<?= $book['BibleOrder'] ?>"<?php endif ?>></div>
                 </div>
-                <div class="form-group d-flex d-xl-flex justify-content-center justify-content-xl-center" style="margin: 30px 0px 0px 0px;width: 100%;"><button class="btn btn-secondary" id="bookButton" type="submit" style="background-color: rgba(220,53,69,0.83);width: 109px;">SAVE</button></div><input class="form-control" type="hidden" name="id" value="<?php if($set):?><?= $id ?><?php else: ?>-1<?php endif ?>"><input class="form-control"
-                    type="hidden" name="operation" value="books"></form>
+                <div class="form-group d-flex d-xl-flex justify-content-center justify-content-xl-center" style="margin: 30px 0px 0px 0px;width: 100%;">
+                    <button class="btn btn-secondary" type="submit" name="command" value="update" style="background-color: rgba(220,53,69,0.83);width: 109px;margin: 0px 15px;">SAVE</button>
+                    <?php if ($set): ?>
+                        <button class="btn btn-secondary" type="submit" name="command" value="delete" style="background-color: rgba(220,53,69,0.83);width: 109px;margin: 0px 15px;">DELETE</button>
+                    <?php endif ?>
+                </div>
+                <input class="form-control" type="hidden" name="id" value="<?php if($set):?><?= $id ?><?php else: ?>-1<?php endif ?>">
+                <input class="form-control" type="hidden" name="operation" value="books"></form>
         </div>
     </div>
-    <div class="footer-dark">
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 col-md-3 item">
-                        <h3>Navigate&nbsp;</h3>
-                        <ul>
-                            <li><a href="index.html">Homepage</a></li>
-                            <li><a href="books.php">Books</a></li>
-                            <li><a href="characters.php">Characters</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-md-3 item">
-                        <h3>About</h3>
-                        <ul>
-                            <li><a href="about.html">Developer</a></li>
-                            <li><a href="https://catalogue.rrc.ca/Programs/WPG/Fulltime/BUSGF-DP/CoursesAndDescriptions/WEBD-2008">Program</a></li>
-                            <li><a href="https://www.rrc.ca/">College</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 item text">
-                        <h3>Books of the Bible</h3>
-                        <p><strong>Web Development 2 project - 2020</strong><br></p>
-                    </div>
-                </div>
-                <p class="copyright">Markus Thiessen © 2020</p>
-            </div>
-        </footer>
-    </div><script src="Javascript/jquery.js"></script>
-<script src="Javascript/book_validation.js"></script>
+    <?php require 'footer.php' ?>
+    <script src="Javascript/jquery.js"></script>
+    <script src="Javascript/book_validation.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>

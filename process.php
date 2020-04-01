@@ -7,6 +7,7 @@ $message = '';
 
 $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
 $operation = filter_input(INPUT_POST, 'operation', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$command = filter_input(INPUT_POST, 'command', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 if ($operation === "characters")
 {
@@ -28,16 +29,29 @@ if ($operation === "characters")
     }
     else
     {
-        $query = "UPDATE person SET Name = :name, Summary = :summary, Meaning = :meaning WHERE id = :id";
-        $statement = $db->prepare($query);
-        $statement->bindValue(':name', $name);
-        $statement->bindValue(':summary', $summary);
-        $statement->bindValue(':meaning', $meaning);
-        $statement->bindValue(':id', $id, PDO::PARAM_INT);
-        $statement->execute();
+        if ($command === 'update')
+        {
+            $query = "UPDATE person SET Name = :name, Summary = :summary, Meaning = :meaning WHERE id = :id";
+            $statement = $db->prepare($query);
+            $statement->bindValue(':name', $name);
+            $statement->bindValue(':summary', $summary);
+            $statement->bindValue(':meaning', $meaning);
+            $statement->bindValue(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
 
-        $title = 'Success';
-        $message = 'Character modified successfully.';
+            $title = 'Success';
+            $message = 'Character modified successfully.';
+        }
+        elseif ($command === 'delete')
+        {
+            $query = "DELETE FROM person WHERE id = :id";
+            $statement = $db->prepare($query);
+            $statement->bindValue(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+
+            $title = 'Success';
+            $message = 'Character deleted successfully.';
+        }
     }
 }
 elseif ($operation === "books")
@@ -71,13 +85,26 @@ elseif ($operation === "books")
     }
     else
     {
-        $query = "UPDATE book SET Name = :name, Testament = :testament, Chapters= :chapters, AudienceDestination = :audience, Summary = :summary, StartYear = :start, CompletionYear = :end, AuthorId = :authorId, BibleOrder = :order WHERE id = :id";
-        $statement = $db->prepare($query);
-        $bind_values = ['name' => $name, 'testament' => $testament, 'chapters' => $chapters, 'audience' => $audience, 'summary' => $summary, 'start' => $start, 'end' => $end, 'authorId' => $authorId, 'order' => $order, 'id' => $id];
-        $statement->execute($bind_values);
+        if ($command === 'update')
+        {
+            $query = "UPDATE book SET Name = :name, Testament = :testament, Chapters= :chapters, AudienceDestination = :audience, Summary = :summary, StartYear = :start, CompletionYear = :end, AuthorId = :authorId, BibleOrder = :order WHERE id = :id";
+            $statement = $db->prepare($query);
+            $bind_values = ['name' => $name, 'testament' => $testament, 'chapters' => $chapters, 'audience' => $audience, 'summary' => $summary, 'start' => $start, 'end' => $end, 'authorId' => $authorId, 'order' => $order, 'id' => $id];
+            $statement->execute($bind_values);
 
-        $title = 'Success';
-        $message = 'Book modified successfully.';
+            $title = 'Success';
+            $message = 'Book modified successfully.';
+        }
+        elseif ($command === 'delete')
+        {
+            $query = "DELETE FROM book WHERE id = :id";
+            $statement = $db->prepare($query);
+            $statement->bindValue(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+
+            $title = 'Success';
+            $message = 'Book deleted successfully.';
+        }
     }
 }
 ?>

@@ -37,7 +37,7 @@ $characters = $statement->fetchAll();
                         <ul id="characterList" class="list">
                             <?php foreach ($characters as $character): ?>
                                 <li>
-                                    <p><?= $character['Name'] ?></p>
+                                    <a href="character.php?id=<?= $character['Id'] ?>"><?= $character['Name'] ?></a>
                                 </li>
                             <?php endforeach ?>
                         </ul>

@@ -111,6 +111,12 @@ else
                     <p><?= $book['Summary'] ?></p>
                 </div>
             </div>
+            <a
+                class="text-uppercase border rounded border-dark" href="books.php" style="width: 109px;border-color: green;margin: 0px 15px;padding: 16px 32px;background-color: rgba(220,53,69,0.77);color: rgba(255,255,255,0.88);font-size: 13px;font-weight: bold;">BACK
+            </a>
+            <a
+                class="text-uppercase border rounded border-dark" href="edit_book.php?id=<?= $book['Id'] ?>" style="width: 109px;border-color: green;margin: 0px 15px;padding: 16px 32px;background-color: rgba(220,53,69,0.77);color: rgba(255,255,255,0.88);font-size: 13px;font-weight: bold;">EDIT
+            </a>
         </div>
     </div>
     <?php require 'footer.php' ?>

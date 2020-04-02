@@ -6,16 +6,20 @@ $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CH
 $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 $error_msg = null;
+$logged = true;
 
 if ($_POST)
 {
     try {
         $auth->loginWithUsername($username, $password);
 
+        $_SESSION['message'] = 'Login successful';
+        $logged = false;
+
         header("Location: index.php");
     }
     catch (\Delight\Auth\UnknownUsernameException $e) {
-        $error_msg = "Unkown username";
+        $error_msg = "Unknown username";
     }
     catch (\Delight\Auth\AmbiguousUsernameException $e) {
         $error_msg = "Ambiguous Username";
@@ -52,7 +56,7 @@ if ($_POST)
 </head>
 
 <body style="background-color: rgb(56,66,67);color: #ffffff;font-family: Amaranth, sans-serif;">
-    <?php require 'header.php' ?>
+    <?php if ($logged): require 'header.php'; endif?>
     <div class="login-dark">
         <form method="post">
             <h2 class="sr-only">Login Form</h2>

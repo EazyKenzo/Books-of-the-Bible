@@ -5,6 +5,7 @@ require 'login/vendor/autoload.php';
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $set = false;
 $userId = $auth->getUserId();
+$admin = false;
 
 if (isset($userId)) {
     if ($auth->admin()->doesUserHaveRole($userId, \Delight\Auth\Role::ADMIN)) {
@@ -16,13 +17,24 @@ if (isset($userId)) {
             $statement->bindValue(':id', $id);
             $statement->execute();
             $character = $statement->fetchAll()[0];
-            }
+        }
+
+        $admin = true;
+    }
+    else {
+        $_SESSION['message'] = 'Only admins can edit content';
+
+        if (isset($id)) {
+            header("Location: character.php?id=$id");
         }
         else {
-            header("Location: index.php");
+            header("Location: characters.php");
         }
     }
-else {
+}
+else{
+    $_SESSION['message'] = 'Only admins can edit content';
+
     header("Location: login.php");
 }
 ?>
@@ -46,7 +58,7 @@ else {
 </head>
 
 <body style="background-color: rgb(56,66,67);color: #ffffff;font-family: Amaranth, sans-serif;">
-    <?php require 'header.php' ?>
+<?php if ($admin): require 'header.php'; endif ?>
     <div class="contact-clean" style="padding: 0px;background-color: #384243;">
         <div style="background-image: url(&quot;assets/img/bible.jpg&quot;);background-size: cover;background-position: center;padding: 80px 0px;">
             <form id="book_edit" method="post" style="background-color: rgba(56,66,67,0.76);color: rgba(45,45,45,0.85);" action="process.php">
@@ -57,8 +69,11 @@ else {
                 <div class="form-group d-flex d-xl-flex justify-content-center justify-content-xl-center" style="margin: 30px 0px 0px 0px;width: 100%;">
                     <button class="btn btn-secondary" type="submit" name="command" value="update" style="background-color: rgba(220,53,69,0.83);width: 109px;margin: 0px 15px;">SAVE</button>
                     <?php if ($set): ?>
-                        <button class="btn btn-secondary" type="submit" name="command" value="delete" style="background-color: rgba(220,53,69,0.83);width: 109px;margin: 0px 15px;">DELETE</button>
+                        <button class="btn btn-secondary" type="submit" name="command" value="delete" style="background-color: rgba(220,53,69,0.83);width: 109px;margin: 0px 15px;" onclick="return confirm('Are you sure you wish to delete this character?')">DELETE</button>
                     <?php endif ?>
+                    <a
+                            class="text-uppercase border rounded border-dark" href="<?php if($set): ?>character.php?id=<?= $character['Id'] ?><?php else: ?>characters.php<?php endif ?>" style="width: 109px;border-color: green;margin: 0px 15px;padding: 16px 32px;background-color: rgba(220,53,69,0.77);color: rgba(255,255,255,0.88);font-size: 13px;font-weight: bold;">CANCEL
+                    </a>
                 </div>
                 <input class="form-control" type="hidden" name="id" value="<?php if($set):?><?= $id ?><?php else: ?>-1<?php endif ?>">
                 <input class="form-control" type="hidden" name="operation" value="characters"></form>

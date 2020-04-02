@@ -45,7 +45,14 @@
         <item name="booksofthebible@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="booksofthebible: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="users: table" type="dbc44a63:MariaImplModel$Table" />
+        <item name="book: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="booksofthebible@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="booksofthebible: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="person: table" type="dbc44a63:MariaImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -117,7 +124,8 @@
       <workItem from="1585139510334" duration="8187000" />
       <workItem from="1585159391175" duration="2586000" />
       <workItem from="1585164475787" duration="388000" />
-      <workItem from="1585762534883" duration="3815000" />
+      <workItem from="1585762534883" duration="5098000" />
+      <workItem from="1585796967212" duration="4227000" />
     </task>
     <servers />
   </component>

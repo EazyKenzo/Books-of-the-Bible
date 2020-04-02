@@ -39,7 +39,7 @@
                             <?php foreach ($books as $book):
                                 if ($book['Testament'] === '0'): ?>
                                     <li>
-                                        <p><?= $book['Name'] ?></p>
+                                        <a href="book.php?id=<?= $book['Id'] ?>"><?= $book['Name'] ?></a>
                                     </li>
                                 <?php endif;
                             endforeach ?>
@@ -53,7 +53,7 @@
                             <?php foreach ($books as $book):
                                 if ($book['Testament'] === '1'): ?>
                                     <li>
-                                        <p><?= $book['Name'] ?></p>
+                                        <a href="book.php?id=<?= $book['Id'] ?>"><?= $book['Name'] ?></a>
                                     </li>
                                 <?php endif;
                             endforeach ?>

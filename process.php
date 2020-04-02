@@ -31,7 +31,7 @@ if ($operation === "characters")
     {
         if ($command === 'update')
         {
-            $query = "UPDATE person SET Name = :name, Summary = :summary, Meaning = :meaning WHERE id = :id";
+            $query = "UPDATE person SET Name = :name, Summary = :summary, Meaning = :meaning WHERE Id = :id";
             $statement = $db->prepare($query);
             $statement->bindValue(':name', $name);
             $statement->bindValue(':summary', $summary);
@@ -44,7 +44,7 @@ if ($operation === "characters")
         }
         elseif ($command === 'delete')
         {
-            $query = "DELETE FROM person WHERE id = :id";
+            $query = "DELETE FROM person WHERE Id = :id";
             $statement = $db->prepare($query);
             $statement->bindValue(':id', $id, PDO::PARAM_INT);
             $statement->execute();
@@ -87,7 +87,7 @@ elseif ($operation === "books")
     {
         if ($command === 'update')
         {
-            $query = "UPDATE book SET Name = :name, Testament = :testament, Chapters= :chapters, AudienceDestination = :audience, Summary = :summary, StartYear = :start, CompletionYear = :end, AuthorId = :authorId, BibleOrder = :order WHERE id = :id";
+            $query = "UPDATE book SET Name = :name, Testament = :testament, Chapters= :chapters, AudienceDestination = :audience, Summary = :summary, StartYear = :start, CompletionYear = :end, AuthorId = :authorId, BibleOrder = :order WHERE Id = :id";
             $statement = $db->prepare($query);
             $bind_values = ['name' => $name, 'testament' => $testament, 'chapters' => $chapters, 'audience' => $audience, 'summary' => $summary, 'start' => $start, 'end' => $end, 'authorId' => $authorId, 'order' => $order, 'id' => $id];
             $statement->execute($bind_values);
@@ -97,7 +97,7 @@ elseif ($operation === "books")
         }
         elseif ($command === 'delete')
         {
-            $query = "DELETE FROM book WHERE id = :id";
+            $query = "DELETE FROM book WHERE Id = :id";
             $statement = $db->prepare($query);
             $statement->bindValue(':id', $id, PDO::PARAM_INT);
             $statement->execute();
@@ -127,21 +127,7 @@ elseif ($operation === "books")
     </head>
 
     <body style="background-color: rgb(56,66,67);color: #ffffff;font-family: Amaranth, sans-serif;">
-    <nav class="navbar navbar-light navbar-expand-md">
-        <div class="container-fluid"><a class="navbar-brand" href="index.php" style="background-image: url(&quot;assets/img/icon.png&quot;);background-repeat: no-repeat;background-size: 80%;width: 130px;background-position: center;height: 150px;"></a><button data-toggle="collapse"
-                                                                                                                                                                                                                                                                   class="navbar-toggler" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-2">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="books.php" style="color: rgba(255,255,255,0.67);font-size: 30px;margin: 10px;">Books</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="characters.php" style="color: rgba(255,255,255,0.67);margin: 10px;font-size: 30px;">Characters</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="color: rgba(255,255,255,0.67);font-size: 30px;margin: 10px;">Users</a></li>
-                </ul>
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="<?php if ($auth->isLoggedIn()): ?>logout.php<?php else: ?>login.php<?php endif ?>" style="color: rgba(255,255,255,0.67);font-size: 20px;"><?php if ($auth->isLoggedIn()): ?>Log out<?php else: ?>Log in<?php endif ?></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+        <?php require 'header.php' ?>
         <div class="highlight-blue" style="padding: 0px;background-color: rgb(56,66,67);">
             <div style="background-image: url(&quot;assets/img/bible.jpg&quot;);height: 1070px;padding: 80px 0px;background-size: cover;background-position: center;">
                 <div class="container" style="width: 480px;height: 910px;padding: 40px;background-color: rgba(56,66,67,0.76);">
@@ -153,35 +139,7 @@ elseif ($operation === "books")
                 </div>
             </div>
         </div>
-        <div class="footer-dark">
-            <footer>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-md-3 item">
-                            <h3>Navigate&nbsp;</h3>
-                            <ul>
-                                <li><a href="index.html">Homepage</a></li>
-                                <li><a href="books.php">Books</a></li>
-                                <li><a href="characters.php">Characters</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6 col-md-3 item">
-                            <h3>About</h3>
-                            <ul>
-                                <li><a href="about.html">Developer</a></li>
-                                <li><a href="https://catalogue.rrc.ca/Programs/WPG/Fulltime/BUSGF-DP/CoursesAndDescriptions/WEBD-2008">Program</a></li>
-                                <li><a href="https://www.rrc.ca/">College</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6 item text">
-                            <h3>Books of the Bible</h3>
-                            <p><strong>Web Development 2 project - 2020</strong><br></p>
-                        </div>
-                    </div>
-                    <p class="copyright">Markus Thiessen © 2020</p>
-                </div>
-            </footer>
-        </div>
+        <?php require 'footer.php' ?>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     </body>

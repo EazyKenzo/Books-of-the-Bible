@@ -43,7 +43,9 @@ $characters = $statement->fetchAll();
                         </ul>
                     </div>
                 </div>
-                <div class="col"><a href="edit_character.php" style="font-size: 20px;text-decoration: none;">Add a new character</a></div>
+                <?php if ($_SESSION['admin']): ?>
+                    <div class="col"><a href="edit_character.php" style="font-size: 20px;text-decoration: none;">Add a new character</a></div>
+                <?php endif ?>
             </div>
         </div>
     </div>

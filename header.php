@@ -38,9 +38,12 @@ $_SESSION['message'] = null;
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="books.php" style="color: rgba(255,255,255,0.67);font-size: 30px;margin: 10px;">Books</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="characters.php" style="color: rgba(255,255,255,0.67);margin: 10px;font-size: 30px;">Characters</a></li>
+                    <?php if (isset($_SESSION['admin']) && $_SESSION['admin']): ?>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="users.php" style="color: rgba(255,255,255,0.67);margin: 10px;font-size: 30px;">Users</a></li>
+                    <?php endif ?>
                 </ul>
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="<?php if ($auth->isLoggedIn()): ?>logout.php<?php else: ?>login.php<?php endif ?>" style="color: rgba(255,255,255,0.67);font-size: 20px;"><?php if ($auth->isLoggedIn()): ?>Log out<?php else: ?>Log in<?php endif ?></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="<?php if ($auth->isLoggedIn()): ?>logout.php<?php else: ?>login.php<?php endif ?>" style="color: rgba(255,255,255,0.67);font-size: 20px;"><?php if ($auth->isLoggedIn()): ?><?php if ($_SESSION['admin']): ?>(Admin) <?php endif ?>Log out<?php else: ?>Log in<?php endif ?></a></li>
                 </ul>
             </div>
         </div>

@@ -11,7 +11,12 @@ $error_msg = null;
 if ($_POST)
 {
     try {
-        $userId = $auth->registerWithUniqueUsername($email, $password, $username);
+        $auth->registerWithUniqueUsername($email, $password, $username);
+        $auth->loginWithUsername($username, $password);
+
+        $_SESSION['message'] = 'Registration successful';
+        header("Location: index.php");
+        exit();
     }
     catch (\Delight\Auth\InvalidEmailException $e) {
         $error_msg = "Invalid email address";
@@ -59,7 +64,10 @@ if ($_POST)
             <div class="form-group"><input class="form-control" type="text" placeholder="Username" required="" name="username"></div>
             <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" required=""></div>
             <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" required=""></div>
-            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Create</button><label class="text-center" id="error" style="width: 100%;color: rgb(220,53,69);"><?php if (isset($error_msg)): ?><?= $error_msg ?><?php endif ?></label></div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">Create</button>
+                <label class="text-center" id="error" style="width: 100%;color: rgb(220,53,69);"><?php if (isset($error_msg)): ?><?= $error_msg ?><?php endif ?></label>
+            </div>
         </form>
     </div>
     <?php require 'footer.php' ?>

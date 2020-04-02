@@ -6,17 +6,22 @@ $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CH
 $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 $error_msg = null;
-$logged = true;
 
 if ($_POST)
 {
     try {
         $auth->loginWithUsername($username, $password);
 
-        $_SESSION['message'] = 'Login successful';
-        $logged = false;
+        if ($auth->admin()->doesUserHaveRole($auth->getUserId(), \Delight\Auth\Role::ADMIN)) {
+            $_SESSION['admin'] = true;
+        }
+        else {
+            $_SESSION['admin'] = false;
+        }
 
+        $_SESSION['message'] = 'Login successful';
         header("Location: index.php");
+        exit();
     }
     catch (\Delight\Auth\UnknownUsernameException $e) {
         $error_msg = "Unknown username";
@@ -56,7 +61,7 @@ if ($_POST)
 </head>
 
 <body style="background-color: rgb(56,66,67);color: #ffffff;font-family: Amaranth, sans-serif;">
-    <?php if ($logged): require 'header.php'; endif?>
+    <?php require 'header.php'?>
     <div class="login-dark">
         <form method="post">
             <h2 class="sr-only">Login Form</h2>

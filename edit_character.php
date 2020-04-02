@@ -5,37 +5,31 @@ require 'login/vendor/autoload.php';
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $set = false;
 $userId = $auth->getUserId();
-$admin = false;
 
-if (isset($userId)) {
-    if ($auth->admin()->doesUserHaveRole($userId, \Delight\Auth\Role::ADMIN)) {
-        if (isset($id)) {
-            $set = true;
+try {
+    if (!$_SESSION['admin'])
+        throw new Exception("You must be an admin to make changes to the database");
 
-            $query = "SELECT * FROM person WHERE id = :id";
-            $statement = $db->prepare($query);
-            $statement->bindValue(':id', $id);
-            $statement->execute();
-            $character = $statement->fetchAll()[0];
-        }
+    if (isset($id)) {
+        $set = true;
 
-        $admin = true;
-    }
-    else {
-        $_SESSION['message'] = 'Only admins can edit content';
-
-        if (isset($id)) {
-            header("Location: character.php?id=$id");
-        }
-        else {
-            header("Location: characters.php");
-        }
+        $query = "SELECT * FROM person WHERE id = :id";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+        $character = $statement->fetchAll()[0];
     }
 }
-else{
-    $_SESSION['message'] = 'Only admins can edit content';
+catch (Exception $e) {
+    $_SESSION['message'] = 'Error: '.$e->getMessage();
 
-    header("Location: login.php");
+    if (isset($id)) {
+        header("Location: character.php?id=$id");
+    }
+    else {
+        header("Location: characters.php");
+    }
+    exit();
 }
 ?>
 
@@ -58,7 +52,7 @@ else{
 </head>
 
 <body style="background-color: rgb(56,66,67);color: #ffffff;font-family: Amaranth, sans-serif;">
-<?php if ($admin): require 'header.php'; endif ?>
+<?php require 'header.php' ?>
     <div class="contact-clean" style="padding: 0px;background-color: #384243;">
         <div style="background-image: url(&quot;assets/img/bible.jpg&quot;);background-size: cover;background-position: center;padding: 80px 0px;">
             <form id="book_edit" method="post" style="background-color: rgba(56,66,67,0.76);color: rgba(45,45,45,0.85);" action="process.php">

@@ -7,6 +7,9 @@ $operation = filter_input(INPUT_POST, 'operation', FILTER_SANITIZE_FULL_SPECIAL_
 $command = filter_input(INPUT_POST, 'command', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 try {
+    if (!$_SESSION['admin'])
+        throw new Exception("You must be an admin to make changes to the database");
+
     if ($operation === "characters") {
         $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $summary = filter_input(INPUT_POST, 'summary', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -21,7 +24,6 @@ try {
             $statement->execute();
 
             $_SESSION['message'] = 'Character added successfully.';
-
             header("Location: $operation.php");
         } else {
             if ($command === 'update') {
@@ -43,7 +45,6 @@ try {
                 $statement->execute();
 
                 $_SESSION['message'] = 'Character deleted successfully.';
-
                 header("Location: $operation.php");
             }
         }
@@ -72,7 +73,6 @@ try {
             $statement->execute($bind_values);
 
             $_SESSION['message'] = 'Book added successfully.';
-
             header("Location: $operation.php");
         } else {
             if ($command === 'update') {
@@ -82,7 +82,6 @@ try {
                 $statement->execute($bind_values);
 
                 $_SESSION['message'] = 'Book modified successfully.';
-
                 header("Location: $operation.php");
             } elseif ($command === 'delete') {
                 $query = "DELETE FROM book WHERE Id = :id";
@@ -91,7 +90,6 @@ try {
                 $statement->execute();
 
                 $_SESSION['message'] = 'Book deleted successfully.';
-
                 header("Location: $operation.php");
             }
         }
@@ -101,9 +99,7 @@ try {
         throw new Exception("Unknown operation");
     }
 }
-catch (Exception $e)
-{
+catch (Exception $e) {
     $_SESSION['message'] = 'Error: '.$e->getMessage();
-
     header("Location: index.php");
 }

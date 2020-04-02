@@ -1,6 +1,14 @@
 <?php
 require 'db_connect.php';
 require 'login/vendor/autoload.php';
+
+$message = null;
+
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+}
+
+$_SESSION['message'] = null;
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +38,6 @@ require 'login/vendor/autoload.php';
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="books.php" style="color: rgba(255,255,255,0.67);font-size: 30px;margin: 10px;">Books</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="characters.php" style="color: rgba(255,255,255,0.67);margin: 10px;font-size: 30px;">Characters</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="color: rgba(255,255,255,0.67);font-size: 30px;margin: 10px;">Users</a></li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="<?php if ($auth->isLoggedIn()): ?>logout.php<?php else: ?>login.php<?php endif ?>" style="color: rgba(255,255,255,0.67);font-size: 20px;"><?php if ($auth->isLoggedIn()): ?>Log out<?php else: ?>Log in<?php endif ?></a></li>
@@ -38,6 +45,7 @@ require 'login/vendor/autoload.php';
             </div>
         </div>
     </nav>
+    <h2 class="text-center<?php if(!isset($message)):?> d-none<?php endif ?>" style="color: #ff2f2f;height: 112px;"><?= $message ?></h2>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>

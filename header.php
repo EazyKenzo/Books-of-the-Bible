@@ -9,6 +9,10 @@ if (isset($_SESSION['message'])) {
 }
 
 $_SESSION['message'] = null;
+
+if (!isset($_SESSION['admin'])) {
+    $_SESSION['admin'] = false;
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +42,7 @@ $_SESSION['message'] = null;
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="books.php" style="color: rgba(255,255,255,0.67);font-size: 30px;margin: 10px;">Books</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="characters.php" style="color: rgba(255,255,255,0.67);margin: 10px;font-size: 30px;">Characters</a></li>
-                    <?php if (isset($_SESSION['admin']) && $_SESSION['admin']): ?>
+                    <?php if ($_SESSION['admin']): ?>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="users.php" style="color: rgba(255,255,255,0.67);margin: 10px;font-size: 30px;">Users</a></li>
                     <?php endif ?>
                 </ul>

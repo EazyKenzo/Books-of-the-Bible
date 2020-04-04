@@ -61,7 +61,7 @@ catch (Exception $e) {
     <?php require 'header.php' ?>
     <div class="contact-clean" style="padding: 0px;background-color: #384243;">
         <div style="padding: 80px 0px;background-image: url(&quot;assets/img/bible.jpg&quot;);background-size: cover;background-position: center;">
-            <form id="book_edit" method="post" style="background-color: rgba(56,66,67,0.76);color: rgba(45,45,45,0.85);" action="process.php">
+            <form id="book_edit" method="post" style="background-color: rgba(56,66,67,0.76);color: rgba(45,45,45,0.85);" action="process.php<?php if($set): ?>?id=<?= $id ?><?php endif ?>">
                 <h2 class="text-center" style="color: #c6c6c6;">New Book<br></h2>
                 <div class="form-group"><label>Name</label><input class="form-control" type="text" name="name" required="" maxlength="50" <?php if($set):?> value="<?= $book['Name'] ?>"<?php endif ?>></div>
                 <div class="d-flex" style="margin: 0px 0px 16px;">
@@ -90,8 +90,8 @@ catch (Exception $e) {
                             class="text-uppercase border rounded border-dark" href="<?php if($set): ?>book.php?id=<?= $book['Id'] ?><?php else: ?>books.php<?php endif ?>" style="width: 109px;border-color: green;margin: 0px 15px;padding: 16px 32px;background-color: rgba(220,53,69,0.77);color: rgba(255,255,255,0.88);font-size: 13px;font-weight: bold;">CANCEL
                     </a>
                 </div>
-                <input class="form-control" type="hidden" name="id" value="<?php if($set):?><?= $id ?><?php else: ?>-1<?php endif ?>">
-                <input class="form-control" type="hidden" name="operation" value="books"></form>
+                <input class="form-control" type="hidden" name="operation" value="books">
+            </form>
         </div>
     </div>
     <?php require 'footer.php' ?>

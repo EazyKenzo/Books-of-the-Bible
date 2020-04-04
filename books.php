@@ -61,7 +61,9 @@
                     </div>
                 </div>
                 <?php if ($_SESSION['admin']): ?>
-                    <div class="col"><a href="edit_book.php" style="font-size: 20px;">Add a new book</a></div>
+                    <div class="col">
+                        <a href="edit_book.php" style="font-size: 20px;">Add a new book</a>
+                    </div>
                 <?php endif ?>
             </div>
         </div>

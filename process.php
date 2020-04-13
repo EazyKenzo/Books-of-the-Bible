@@ -142,6 +142,101 @@ try {
             $_SESSION['message'] = 'Comment added successfully.';
             header("Location: $table.php?id=$onId");
         }
+    } elseif ($operation === "users") {
+        if (!$_SESSION['admin'])
+            throw new Exception("You must be an admin to make changes to the database");
+
+        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $admin = filter_input(INPUT_POST, 'admin', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        if (isset($id)) {
+            if ($command === 'delete') {
+                try {
+                    $auth->admin()->deleteUserById($id);
+
+                    $_SESSION['message'] = 'User deleted';
+                }
+                catch (\Delight\Auth\UnknownIdException $e) {
+                    $_SESSION['message'] = 'User deleted';
+                }
+            }
+            elseif ($command === 'update') {
+                if (isset($password) && strlen($password) > 0) {
+                    try {
+                        $auth->admin()->changePasswordForUserById($id, $password);
+                    }
+                    catch (\Delight\Auth\UnknownIdException $e) {
+                        $_SESSION['message'] = 'Unknown ID';
+                    }
+                    catch (\Delight\Auth\InvalidPasswordException $e) {
+                        $_SESSION['message'] = 'Invalid password';
+                    }
+                }
+
+                if (isset($admin) && $admin === 'on') {
+                    try {
+                        $auth->admin()->addRoleForUserById($id, \Delight\Auth\Role::ADMIN);
+                    }
+                    catch (\Delight\Auth\UnknownIdException $e) {
+                        $_SESSION['message'] = 'Unknown user ID';
+                    }
+                }
+                else {
+                    try {
+                        $auth->admin()->removeRoleForUserById($id, \Delight\Auth\Role::ADMIN);
+                    }
+                    catch (\Delight\Auth\UnknownIdException $e) {
+                        $_SESSION['message'] = 'Unknown user ID';
+                    }
+                }
+
+                if (!isset($_SESSION['message'])) {
+                    $_SESSION['message'] = 'User updated';
+                };
+            }
+        }
+        else {
+            $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            try {
+                $auth->admin()->createUser($email, $password, $username);
+
+                if (isset($admin) && $admin === 'on') {
+                    $query = "SELECT id FROM users WHERE username = :username ";
+                    $statement = $db->prepare($query);
+                    $statement->bindValue(':username', $username);
+                    $statement->execute();
+                    $id = $statement->fetch()[0];
+
+                    try {
+                        $auth->admin()->addRoleForUserById($id, \Delight\Auth\Role::ADMIN);
+                    }
+                    catch (\Delight\Auth\UnknownIdException $e) {
+                        $_SESSION['message'] = 'Unknown user ID';
+                    }
+                }
+
+                $_SESSION['message'] = 'User successfully created';
+            }
+            catch (\Delight\Auth\InvalidEmailException $e) {
+                $_SESSION['message'] = "Error: Invalid email address";
+            }
+            catch (\Delight\Auth\InvalidPasswordException $e) {
+                $_SESSION['message'] = "Error: Invalid password";
+            }
+            catch (\Delight\Auth\UserAlreadyExistsException $e) {
+                $_SESSION['message'] = "Error: User already exists";
+            }
+            catch (\Delight\Auth\TooManyRequestsException $e) {
+                $_SESSION['message'] = "Error: Too many requests";
+            }
+            catch (\Delight\Auth\DuplicateUsernameException $e) {
+                $_SESSION['message'] = "Error: Duplicate username";
+            }
+        }
+
+        header("Location: users.php");
     } else {
         throw new Exception("Unknown operation");
     }

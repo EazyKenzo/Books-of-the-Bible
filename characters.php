@@ -27,31 +27,32 @@ $characters = $statement->fetchAll();
 </head>
 
 <body style="background-color: rgb(56,66,67);color: #ffffff;font-family: Amaranth, sans-serif;">
-    <?php require 'header.php' ?>
-    <div>
-        <h1 class="text-center" style="height: 95px;">Characters of the Bible</h1>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div>
-                        <ul id="characterList" class="list">
-                            <?php foreach ($characters as $character): ?>
-                                <li>
-                                    <a href="character.php?id=<?= $character['Id'] ?>"><?= $character['Name'] ?></a>
-                                </li>
-                            <?php endforeach ?>
-                        </ul>
-                    </div>
+<?php require 'header.php' ?>
+<div>
+    <h1 class="text-center" style="height: 95px;">Characters of the Bible</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <ul id="characterList" class="list">
+                        <?php foreach ($characters as $character): ?>
+                            <li>
+                                <a href="character.php?id=<?= $character['Id'] ?>"><?= $character['Name'] ?></a>
+                            </li>
+                        <?php endforeach ?>
+                    </ul>
                 </div>
-                <?php if ($_SESSION['admin']): ?>
-                    <div class="col"><a href="edit_character.php" style="font-size: 20px;text-decoration: none;">Add a new character</a></div>
-                <?php endif ?>
             </div>
+            <?php if ($_SESSION['admin']): ?>
+                <div class="col"><a href="edit_character.php" style="font-size: 20px;text-decoration: none;">Add a new
+                        character</a></div>
+            <?php endif ?>
         </div>
     </div>
-    <?php require 'footer.php' ?>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</div>
+<?php require 'footer.php' ?>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

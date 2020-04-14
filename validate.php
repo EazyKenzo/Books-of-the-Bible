@@ -9,11 +9,8 @@ $statement->bindValue(':author', $authorName);
 $statement->execute();
 $author = $statement->fetchAll();
 
-if (isset($author[0]))
-{
+if (isset($author[0])) {
     echo 1;
-}
-else
-{
+} else {
     echo 2;
 }

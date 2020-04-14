@@ -28,29 +28,29 @@ $users = $statement->fetchAll();
 </head>
 
 <body style="background-color: rgb(56,66,67);color: #ffffff;font-family: Amaranth, sans-serif;">
-    <?php require 'header.php' ?>
-    <div>
-        <h1 class="text-center" style="height: 95px;">Users</h1>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div>
-                        <ul id="characterList" class="list">
-                            <?php foreach ($users as $user): ?>
-                                <li>
-                                    <a href="user.php?id=<?= $user['id'] ?>"><?= $user['username'] ?></a>
-                                </li>
-                            <?php endforeach ?>
-                        </ul>
-                    </div>
+<?php require 'header.php' ?>
+<div>
+    <h1 class="text-center" style="height: 95px;">Users</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <ul id="characterList" class="list">
+                        <?php foreach ($users as $user): ?>
+                            <li>
+                                <a href="user.php?id=<?= $user['id'] ?>"><?= $user['username'] ?></a>
+                            </li>
+                        <?php endforeach ?>
+                    </ul>
                 </div>
-                <div class="col"><a href="user.php" style="font-size: 20px;text-decoration: none;">Add a new user</a></div>
             </div>
+            <div class="col"><a href="user.php" style="font-size: 20px;text-decoration: none;">Add a new user</a></div>
         </div>
     </div>
-    <?php require 'footer.php' ?>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</div>
+<?php require 'footer.php' ?>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

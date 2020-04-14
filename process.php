@@ -2,6 +2,9 @@
 require 'db_connect.php';
 require 'login/vendor/autoload.php';
 
+use Egulias\EmailValidator\EmailValidator;
+use Egulias\EmailValidator\Validation\RFCValidation;
+
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $operation = filter_input(INPUT_POST, 'operation', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $command = filter_input(INPUT_POST, 'command', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -155,20 +158,16 @@ try {
                     $auth->admin()->deleteUserById($id);
 
                     $_SESSION['message'] = 'User deleted';
-                }
-                catch (\Delight\Auth\UnknownIdException $e) {
+                } catch (\Delight\Auth\UnknownIdException $e) {
                     $_SESSION['message'] = 'User deleted';
                 }
-            }
-            elseif ($command === 'update') {
+            } elseif ($command === 'update') {
                 if (isset($password) && strlen($password) > 0) {
                     try {
                         $auth->admin()->changePasswordForUserById($id, $password);
-                    }
-                    catch (\Delight\Auth\UnknownIdException $e) {
+                    } catch (\Delight\Auth\UnknownIdException $e) {
                         $_SESSION['message'] = 'Unknown ID';
-                    }
-                    catch (\Delight\Auth\InvalidPasswordException $e) {
+                    } catch (\Delight\Auth\InvalidPasswordException $e) {
                         $_SESSION['message'] = 'Invalid password';
                     }
                 }
@@ -176,16 +175,13 @@ try {
                 if (isset($admin) && $admin === 'on') {
                     try {
                         $auth->admin()->addRoleForUserById($id, \Delight\Auth\Role::ADMIN);
-                    }
-                    catch (\Delight\Auth\UnknownIdException $e) {
+                    } catch (\Delight\Auth\UnknownIdException $e) {
                         $_SESSION['message'] = 'Unknown user ID';
                     }
-                }
-                else {
+                } else {
                     try {
                         $auth->admin()->removeRoleForUserById($id, \Delight\Auth\Role::ADMIN);
-                    }
-                    catch (\Delight\Auth\UnknownIdException $e) {
+                    } catch (\Delight\Auth\UnknownIdException $e) {
                         $_SESSION['message'] = 'Unknown user ID';
                     }
                 }
@@ -194,12 +190,16 @@ try {
                     $_SESSION['message'] = 'User updated';
                 };
             }
-        }
-        else {
+        } else {
             $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             try {
+                $validator = new EmailValidator();
+
+                if (!$validator->isValid($email, new RFCValidation()))
+                    throw new Exception("Error: Invalid email address");
+
                 $auth->admin()->createUser($email, $password, $username);
 
                 if (isset($admin) && $admin === 'on') {
@@ -211,27 +211,21 @@ try {
 
                     try {
                         $auth->admin()->addRoleForUserById($id, \Delight\Auth\Role::ADMIN);
-                    }
-                    catch (\Delight\Auth\UnknownIdException $e) {
+                    } catch (\Delight\Auth\UnknownIdException $e) {
                         $_SESSION['message'] = 'Unknown user ID';
                     }
                 }
 
                 $_SESSION['message'] = 'User successfully created';
-            }
-            catch (\Delight\Auth\InvalidEmailException $e) {
+            } catch (\Delight\Auth\InvalidEmailException $e) {
                 $_SESSION['message'] = "Error: Invalid email address";
-            }
-            catch (\Delight\Auth\InvalidPasswordException $e) {
+            } catch (\Delight\Auth\InvalidPasswordException $e) {
                 $_SESSION['message'] = "Error: Invalid password";
-            }
-            catch (\Delight\Auth\UserAlreadyExistsException $e) {
+            } catch (\Delight\Auth\UserAlreadyExistsException $e) {
                 $_SESSION['message'] = "Error: User already exists";
-            }
-            catch (\Delight\Auth\TooManyRequestsException $e) {
+            } catch (\Delight\Auth\TooManyRequestsException $e) {
                 $_SESSION['message'] = "Error: Too many requests";
-            }
-            catch (\Delight\Auth\DuplicateUsernameException $e) {
+            } catch (\Delight\Auth\DuplicateUsernameException $e) {
                 $_SESSION['message'] = "Error: Duplicate username";
             }
         }
@@ -240,8 +234,7 @@ try {
     } else {
         throw new Exception("Unknown operation");
     }
-}
-catch (Exception $e) {
-    $_SESSION['message'] = 'Error: '.$e->getMessage();
+} catch (Exception $e) {
+    $_SESSION['message'] = 'Error: ' . $e->getMessage();
     header("Location: index.php");
 }

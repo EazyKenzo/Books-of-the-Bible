@@ -1,5 +1,6 @@
 {
     "require": {
-        "delight-im/auth": "^8.1"
+        "delight-im/auth": "^8.1",
+        "egulias/email-validator": "^2.1"
     }
 }

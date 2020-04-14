@@ -10,6 +10,11 @@
       <excludeFolder url="file://$MODULE_DIR$/login/vendor/delight-im/cookie" />
       <excludeFolder url="file://$MODULE_DIR$/login/vendor/delight-im/db" />
       <excludeFolder url="file://$MODULE_DIR$/login/vendor/delight-im/http" />
+      <excludeFolder url="file://$MODULE_DIR$/login/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/login/vendor/egulias/email-validator" />
+      <excludeFolder url="file://$MODULE_DIR$/login/vendor/symfony/polyfill-intl-idn" />
+      <excludeFolder url="file://$MODULE_DIR$/login/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/login/vendor/symfony/polyfill-php72" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

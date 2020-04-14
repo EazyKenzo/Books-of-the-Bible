@@ -8,6 +8,11 @@
       <path value="$PROJECT_DIR$/login/vendor/delight-im/db" />
       <path value="$PROJECT_DIR$/login/vendor/delight-im/http" />
       <path value="$PROJECT_DIR$/login/vendor/composer" />
+      <path value="$PROJECT_DIR$/login/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/login/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/login/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/login/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/login/vendor/egulias/email-validator" />
     </include_path>
   </component>
 </project>

@@ -1,3 +1,13 @@
+<?php
+require 'db_connect.php';
+require 'login/vendor/autoload.php';
+
+$query = "SELECT * FROM book ORDER BY bibleorder";
+$statement = $db->prepare($query);
+$statement->execute();
+$books = $statement->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,7 +33,7 @@
                 <h1 class="text-center" style="height: 151px;">Books of the Bible</h1>
                 <div class="row" style="margin: 15px 0px;">
                     <div class="col-md-12" style="padding: 0px;">
-                        <form class="border rounded-0" style="padding: 10px;">
+                        <form style="padding: 10px;">
                             <div class="form-group d-flex d-xl-flex align-items-center align-items-sm-center align-items-lg-center align-items-xl-center" style="margin: 15px 0px;">
                                 <select class="form-control" id="filter" style="width: 129px;padding: 6px 0px;">
                                     <option value="" selected="" id="test" hidden="" disabled="" color="#ba2575">Search/Filter</option>
@@ -70,7 +80,11 @@
                     <div class="col-md-12">
                         <div>
                             <ul id="booksList" class="list">
-
+                                <?php foreach ($books as $book): ?>
+                                    <li>
+                                        <a href="book.php?id=<?= $book['Id'] ?>"><?= $book['Name'] ?></a>
+                                    </li>
+                                <?php endforeach ?>
                             </ul>
                         </div>
                     </div>

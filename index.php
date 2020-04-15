@@ -29,38 +29,27 @@ require 'login/vendor/autoload.php';
                 <div class="row">
                     <div class="col">
                         <div class="intro">
-                            <p class="text-center text-white" style="font-size: 18px;">
-                                <span class="by">by</span>
-                                <a
-                                        class="text-danger" href="about.html">Markus Thiessen
-                                </a>
+                            <p class="text-center text-danger" style="font-size: 18px;">
+                                <span class="text-white by">by</span> MARKUS THIESSEN
                             </p>
                             <img
                                     src="assets/img/bible.jpg" loading="auto" width="100%">
                         </div>
                         <div class="text" style="color: rgba(255,255,255,0.67);">
-                            <p>This website aims to provide historic data to provide clarity on matters related to the bible;
+                            <p>
+                                This website aims to provide historic data to provide clarity on matters related to the bible;
                                 including dates, writers, and content summary.
                             </p>
-                            <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac lacus.
-                                <strong>Ut vehicula
-                                    rhoncus
-                                </strong>
-                                elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit
-                                <em>pulvinar
-                                    dict
-                                </em>
-                                vel in justo. Vestibulum
-                                ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
-                            </p>
                             <h2 style="color: #dc3545;">Disclaimer</h2>
-                            <p>While I have made every attempt to ensure that the information contained in this site has been
+                            <p>
+                                While I have made every attempt to ensure that the information contained in this site has been
                                 obtained from reliable sources, the information in this site is for general guidance on matters
                                 of interest only. The estimated dates
                                 and information can vary widely based on specific facts involved due to the varying historic
                                 data.
                             </p>
-                            <p>We are not responsible for any errors or omissions, or for any misleading result obtained from
+                            <p>
+                                We are not responsible for any errors or omissions, or for any misleading result obtained from
                                 the use of this information. All information in this site is provided "as is", with no guarentee
                                 of completeness or accuracy.
                             </p>

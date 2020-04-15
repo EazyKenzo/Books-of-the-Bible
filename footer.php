@@ -41,8 +41,19 @@
                     </ul>
                 </div>
                 <div class="col-md-6 item text">
-                    <h3>Books of the Bible</h3>
-                    <p><strong>Web Development 2 project - 2020</strong><br></p>
+                    <h3>Sources</h3>
+                    <p>
+                        <a href="https://biblehub.com">biblehub.com</a>
+                    </p>
+                    <p>
+                        <a href="https://overviewbible.com">overviewbible.com</a>
+                    </p>
+                    <p>
+                        <a href="https://www.behindthename.com">behindthename.com</a>
+                    </p>
+                    <p>
+                        HOLMAN Illustrated Bible Handbook
+                    </p>
                 </div>
             </div>
             <p class="copyright">Markus Thiessen © 2020</p>
